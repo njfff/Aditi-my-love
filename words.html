@@ -3,102 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <title>From My Heart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-  body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to bottom right, pink, #d3cce3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    font-family: 'Georgia', serif;
-    text-align: center;
-    overflow: hidden;
-   
-  }
+    body {
+      margin: 0;
+      padding: 0;
+      background: mediumpurple;
+      font-family: 'Georgia', serif;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
-  .message-box {
-    background: rgba(255, 255, 255, 0.3);
-    padding: 40px;
-    border-radius: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    backdrop-filter: blur(12px);
-    animation: fadeIn 1.5s ease;
-   border:2px solid black;
-  }
+    .message-box {
+      width: 85vw; /* Thoda chhota kiya border dikhne ke liye */
+      height: 65vh;
+      padding: 20px;
+      background: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+      border: 3px solid black;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
 
-  h1 {
-    font-size: 34px;
-    color: #662d91;
-    margin-bottom: 10px;
-  }
+    h1 {
+      font-size: 5.5vw;
+      color: grey;
+      margin-bottom: 15px;
+    }
 
-  p {
-    font-size: 20px;
-    color: #333;
-    max-width: 400px;
-    margin: auto;
-  }
+    p {
+      font-size: 4.5vw;
+      color: black;
+      max-width: 90%;
+      margin: 0 auto 20px;
+      line-height: 1.5;
+    }
 
-  .heart {
-    font-size: 40px;
-    margin: 20px 0;
-    animation: beat 1s infinite;
-  }
+    .heart {
+      font-size: 10vw;
+      animation: beat 1s infinite;
+      margin-bottom: 30px;
+    }
 
-  .buttons {
-    margin-top: 30px;
-    position: relative;
-    height: 100px;
-    
-  }
+    .buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
 
-  button {
-    padding: 10px 20px;
-    font-size: 18px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    margin: 0 10px;
-    transition: 0.3s ease;
-    position: absolute;
-  }
+    .yes-btn, .no-btn {
+      padding: 12px 24px;
+      font-size: 4.5vw;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+    }
 
-  .yes-btn {
-    background-color: #ff69b4;
-    color: white;
-    left: 50%;
-    transform: translateX(-50%);
-    position: relative;
-    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
-    border:2px solid black;
-  }
+    .yes-btn {
+      background-color: #28a745;
+    }
 
-  .no-btn {
-    background-color: #6c757d;
-    color: white;
-    box-shadow: 0 4px 10px rgba(108, 117, 125, 0.4);
-    border:2px solid black;
-  }
+    .no-btn {
+      background-color: #dc3545;
+      position: absolute;
+    }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-  @keyframes beat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.3); }
-  }
-</style>
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+  </style>
 </head>
 <body>
   <div class="message-box">
-    <h1>Ek Baat Kehni Thi...</h1>
+    <h1>Ek Baat Kehni Thi…</h1>
     <p>
       Shayad ajeeb lage, par dil se keh raha hoon…  
-      Tumhari bate mere din ki dhadkan hai.  
+      Tumhari bate mere dil ki dhadkan hai.  
       Agar tum bhi thoda sa feel karti ho, to shayad…  
       Hum dono ka safar yahi se shuru ho sakta hai.
     </p>
@@ -111,11 +107,13 @@
   </div>
 
   <script>
-    const noBtn = document.getElementById('noBtn');
+    /*const noBtn = document.getElementById('noBtn');
 
     function moveNoBtn() {
-      const maxX = window.innerWidth - 100;
-      const maxY = window.innerHeight - 50;
+      const box = document.querySelector('.message-box');
+      const maxX = box.offsetWidth - noBtn.offsetWidth;
+      const maxY = box.offsetHeight - noBtn.offsetHeight;
+
       const x = Math.random() * maxX;
       const y = Math.random() * maxY;
 
@@ -123,9 +121,27 @@
       noBtn.style.top = `${y}px`;
     }
 
-    // Move the "No" button every 300ms
-    setInterval(moveNoBtn, 300);
-  
+    setInterval(moveNoBtn, 200);*/
+    
+  const noBtn = document.getElementById('noBtn');
+
+  function moveNoBtn() {
+    const box = document.querySelector('.message-box');
+    const maxX = box.offsetWidth - noBtn.offsetWidth;
+    const maxY = box.offsetHeight - noBtn.offsetHeight;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = `${x}px`;
+    noBtn.style.top = `${y}px`;
+  }
+
+  // 7 सेकंड बाद हिलना शुरू होगा
+  setTimeout(() => {
+    setInterval(moveNoBtn, 200);
+  }, 13000);
+
   </script>
 </body>
 </html>
